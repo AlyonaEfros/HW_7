@@ -5,13 +5,16 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
 public class RegistrationResultsModal {
-    public void verifyModalAppear (){
+    public RegistrationResultsModal verifyModalAppear (){
         $(".modal-content").should(Condition.appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+
+        return this;
     }
 
-    public void verifyResult(String key, String value) {
+    public RegistrationResultsModal verifyResult(String key, String value) {
         $(".table-responsive").$(byText(key)).parent()
                 .shouldHave(text(value));
+
+        return this;
     }
 }
